@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="mt-5 pt-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8 mb-3 align-content-center">
+                <div class="card h-100">
+                    <div class="wrapper1 justify-content-center" style="height: auto;">
+                        <div class="container">
+                            {% if messages %}
+                            <div class="row">
+                                {% for message in messages %}
+                                <h4 style="text-align: center; color: #0cf50c;">{{ message }}</h4>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            <h2 class="text-center">Staff Information Form</h2>
+                            
+                            <form id="formAwesome" method="post" action="{% url 'staff' %}">
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    <hr class="new1">
+                                    <div class="form-group row">
+                                        <label for="date" class="col-sm-6 col-form-label">তারিখঃ</label>
+                                        <div class="col-sm-6">
+                                            <input type="date" id="date" name="date" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="name" class="col-sm-6 col-form-label">Name:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="post" class="col-sm-6 col-form-label">Post:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="post" name="post" placeholder="Enter post" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="salary" class="col-sm-6 col-form-label">Salary:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="salary" name="salary" placeholder="Enter salary" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="address" class="col-sm-6 col-form-label">Address:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="number" class="col-sm-6 col-form-label">Mobile:</label>
+                                        <div class="col-sm-6">
+                                            <input type="number" class="form-control" id="number" name="number" placeholder="Enter mobile number" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="comments" class="col-sm-6 col-form-label">Reference:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="comments" name="comments" placeholder="Enter any reference information" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

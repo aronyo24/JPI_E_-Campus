@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<main class="mt-5 pt-3">
+      <div class="container-fluid">
+
+
+
+      </div>
+      <div class="row justify-content-center mt-5">
+        {% if messages %}
+                <div class="row">
+                    {% for message in messages %}
+                                <h4 style="text-align: center; color: #0cf50c;">{{ message }}</h4>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        <h2 class="text-center">মাছ ক্রয় সংক্রান্ত তথ্য</h2>
+        <div class="col-md-8 mb-3  align-content-center">
+          <div class="card h-100">
+
+            <div class="wrapper1  justify-content-center" style="height: auto;">
+
+              <div class="container ">
+
+                <form id="formAwesome" method="post" action="{% url 'fishbuy' %}">
+                {% csrf_token %}
+                  <div class="modal-body">
+                    <hr class="new1">
+                    <div class="form-group row">
+                      <label for="date" class="col-sm-6 col-form-label">
+                        তারিখঃ
+                      </label>
+                      <div class="col-sm-6">
+                        <input type="date" id="date" name="date" class="form-control" required>
+                      </div>
+                    </div>
+                    <hr style="height: 2px;">
+                    <div class="form-group row">
+                      <label for="fish_name" class="col-sm-6 col-form-label">
+                        মাছের নামঃ
+                      </label>
+                      <div class="col-sm-6">
+                        <select id="category " class="form-control"  name="fish_name">
+                                <option value="----">----</option>
+                                <option value="রুই">রুই</option>
+                                <option value="কাতলা">কাতলা</option>
+                                <option value="মৃগেল">মৃগেল</option>
+                                <option value="গ্রাস কার্প">গ্রাস কার্প</option>
+                                <option value="পুটি">পুটি</option>
+                                <option value="তেলাপিয়া">তেলাপিয়া</option>
+                                <option value="চিংড়ি">চিংড়ি</option>
+                                <option value="সিলভার কার্প">সিলভার কার্প</option>
+                                <option value="ধানী">ধানী</option>
+                                <option value="জাপানি">জাপানি</option>
+                                <option value="মাছের ডিম">মাছের ডিম</option>
+                                <option value="ব্লাড কার্প">ব্লাড কার্প</option>
+                                <option value="ব্রিগেড">ব্রিগেড</option>
+                                <option value="শোল">শোল</option>
+                        </select>
+
+                      </div>
+                    </div>
+                    <hr style="height: 2px;">
+                    <div class="form-group row">
+                      <label for="purchase_place" class="col-sm-6 col-form-label">
+                        ক্রয়ের স্থানঃ
+                      </label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" name="purchase_place" id="purchase_place" maxlength="20"
+                          placeholder="ক্রয়ের স্থান" required>
+                      </div>
+                    </div>
+                    <hr style="height: 2px;">
+                    <div class="form-group row">
+                      <label for="quantity" class="col-sm-6 col-form-label">
+                        পরিমাণঃ
+                      </label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="পরিমাণ" required>
+                      </div>
+                    </div>
+                    <hr style="height: 2px;">
+                    <div class="form-group row">
+                      <label for="fish_count" class="col-sm-6 col-form-label">
+                        মাছের সংখ্যাঃ
+                      </label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" name="fish_count" id="fish_count" placeholder="মাছের সংখ্যা" required>
+                      </div>
+                    </div>
+                    <hr style="height: 2px;">
+                    <div class="form-group row">
+                      <label for="price" class="col-sm-6 col-form-label">
+                        মূল্যঃ
+                      </label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="price" name="price" placeholder="মূল্য" required>
+                      </div>
+                    </div>
+                    <hr style="height: 2px;">
+                    <div class="form-group row">
+                      <label for="payment_method" class="col-sm-6 col-form-label">
+                        যে ঘেরে প্রদানঃ
+                      </label>
+                      <div class="col-sm-6">
+                         <select id="category " class="form-control"  name="ghere">
+                                <option value="---">---</option>
+                                <option value="South">দক্ষিণ</option>
+                                <option value="North">উত্তর</option>
+                                <option value="East">পূর্ব</option>
+                                <option value="West">পশ্চিম</option>
+                                <option value="Uzzal">উজ্জ্বল</option>
+                         </select>
+                      </div>
+                    </div>
+                    <hr style="height: 2px;">
+                    <div class="form-group row">
+                      <label for="voucher" class="col-sm-6 col-form-label">
+                        ভাউচারঃ
+                      </label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="voucher" name="voucher" placeholder="রশিদ নম্বর" required>
+                      </div>
+                    </div>
+                    <hr style="height: 2px;">
+                    <div class="form-group row">
+                      <label for="comment" class="col-sm-6 col-form-label">
+                        মন্তব্যঃ
+                      </label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="comment" name="comment" placeholder="মন্তব্য" required>
+                      </div>
+                    </div>
+                    <hr style="height: 2px;">
+                    <div class="form-group row">
+                      <label for="other_info" class="col-sm-6 col-form-label">
+                        অন্য বিশেষ তথ্যঃ
+                      </label>
+                      <div class="col-sm-6">
+                        <input type="text" class="form-control" id="other_info" name="other_info" placeholder="অন্য কোন বিশেষ তথ্য থাকলে" required>
+                      </div>
+                    </div>
+
+
+
+                   <button type="submit" class="btn  text-center" style="width: 100%; text-align: center">জমা দিন</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+{% endblock %}
+

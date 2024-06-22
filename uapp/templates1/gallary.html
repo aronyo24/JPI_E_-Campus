@@ -1,0 +1,50 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+
+
+<section id="Home" style="height: 40vh; background-image: url('{% static "images/about_1.png" %}'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+     <div class="container text-center pt-5" style="margin: 0 auto;"><h1 class="pt-4" style="color: #08ee0c;-webkit-text-stroke: 1.5px #150aaf;"> gallery</h1></div>
+ </section>
+<section id="gallery">
+    <!-- Gallery -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mt-3 col-lg-4">
+                <div class="image-container">
+                    <img src="{% static 'images/g1 (1).png' %}" class="img-fluid" alt="fish-2">
+
+                    <div class="image-name">Image 1</div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3 col-lg-4">
+                <div class="image-container">
+                    <img src="{% static 'images/g1 (2).png' %}" class="img-fluid" alt="image">
+                    <div class="image-name">Image 2</div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-3 col-lg-4">
+                <div class="image-container">
+                    <img src="{% static 'images/g3 (1).png' %}" class="img-fluid" alt="image">
+                    <div class="image-name">Image 3</div>
+                </div>
+            </div>
+             <div class="col-md-4 mt-3 col-lg-4">
+                <div class="image-container">
+                    <img src="{% static 'images/g4 (1).png' %}" class="img-fluid" alt="image">
+                    <div class="image-name">Image 3</div>
+                </div>
+            </div>
+             <div class="col-md-4 mt-3 col-lg-8">
+                <div class="image-container">
+                    <img src="{% static 'images/g5 (1).png' %}" class="img-fluid" alt="image">
+                    <div class="image-name">Image 3</div>
+                </div>
+            </div>
+            <!-- Add more images as needed -->
+        </div>
+    </div>
+    <!-- Gallery -->
+</section>
+
+{% endblock %}

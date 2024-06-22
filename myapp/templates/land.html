@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="mt-5 pt-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center mt-5">
+            <div class="row justify-content-center mt-5">
+                {% if messages %}
+                <div class="row">
+                    {% for message in messages %}
+                    <h4 style="text-align: center; color: #0cf50c;">{{ message }}</h4>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <h2 class="text-center">জমি লিজ সংক্রান্ত তথ্য</h2>
+            <div class="col-md-8 mb-3 align-content-center">
+                <div class="card h-100">
+                    <div class="wrapper1 justify-content-center" style="height: auto;">
+                        <div class="container">
+                            <form id="formAwesome" method="post" action="{% url 'land' %}">
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    <hr class="new1">
+                                    <div class="form-group row">
+                                        <label for="date" class="col-sm-6 col-form-label">তারিখঃ</label>
+                                        <div class="col-sm-6">
+                                            <input type="date" id="date" name="date" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="gher" class="col-sm-6 col-form-label">ঘেরঃ</label>
+                                        <div class="col-sm-6">
+                                            <select id="gher" class="form-control" name="gher" required>
+                                                <option value="">---</option>
+                                                <option value="1">উত্তর</option>
+                                                <option value="2">দক্ষিণ</option>
+                                                <option value="3">পূর্ব</option>
+                                                <option value="4">পশ্চিম</option>
+                                                <option value="5">উজ্জ্বল</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="mousa" class="col-sm-6 col-form-label">মৌজাঃ</label>
+                                        <div class="col-sm-6">
+                                            <select id="mousa" class="form-control" name="mousa" required>
+                                                <option value="">---</option>
+                                                <option value="Rajapur">রাজাপুর</option>
+                                                <option value="Amdanga">আমডাংগা</option>
+                                                <option value="Ramsara">রামসরা</option>
+                                                <option value="Arpara">আড়পাড়া</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="dag_number" class="col-sm-6 col-form-label">দাগ নম্বরঃ</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="dag_number" class="form-control" id="dag_number" placeholder="দাগ কত? " required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="khatian_number" class="col-sm-6 col-form-label">খতিয়ান নম্বরঃ</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="khatian_number" name="khatian_number" placeholder="খতিয়ান নম্বর" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="land_area" class="col-sm-6 col-form-label">জমির পরিমাণ (শতাংশ)</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="land_area" name="land_area" placeholder="কত শতাংশ" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="cultivable_land" class="col-sm-6 col-form-label">প্লেন জমিঃ</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="cultivable_land" name="cultivable_land" placeholder="কতটুকু চাষযোগ্য" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="adjacent_land" class="col-sm-6 col-form-label">পাড় এবং ক্যানেল জমিঃ</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="adjacent_land" name="adjacent_land" placeholder="পাড়, ক্যানেলের পরিমাণ " required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="owners_name" class="col-sm-6 col-form-label">মালিকদের নামঃ</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="owners_name" name="owners_name" placeholder="সকল মালিকদের নাম " required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="comments" class="col-sm-6 col-form-label">মন্তব্যঃ</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="comments" name="comments" placeholder="অন্য কোন বিশেষ তথ্য থাকলে" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">জমা দিন</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

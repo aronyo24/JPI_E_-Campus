@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<main class="mt-5 pt-3">
+    <div class="container-fluid">
+    </div>
+    <div class="row justify-content-center mt-5">
+        <h2 class="text-center">বিনিয়োগ সংক্রান্ত তথ্য</h2>
+        <div class="col-md-8 mb-3  align-content-center">
+            <div class="card h-100">
+                <div class="wrapper1  justify-content-center" style="height: auto;">
+                    <div class="container">
+                        <form id="formAwesome" method="post" action="{% url 'investments' %}">
+                            {% csrf_token %}
+                            <div class="modal-body">
+                                <hr class="new1">
+                                <div class="form-group row">
+                                    <label for="date" class="col-sm-6 col-form-label">
+                                        তারিখঃ
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="date" id="date" name="date" class="form-control" required>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="purchase_place" class="col-sm-6 col-form-label">
+                                        বিনিয়োগকারী নামঃ
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" name="Name" required>
+                                            <option value="Sujit">Sujit Biswas</option>
+                                            <option value="Uzzal">Uzzal Kumar Mondal</option>
+                                            <option value="Shidharta">Shidharta Biswas</option>
+                                            <option value="Sujata">Sujata Biswas</option>
+                                            <option value="Prodip">Prodip Mallick</option>
+                                            <option value="Provash">Provash Bokshi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="quantity" class="col-sm-6 col-form-label">
+                                        টাকার পরিমাণঃঃ
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="টাকার পরিমাণ" required>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="other_info" class="col-sm-6 col-form-label">
+                                        মন্তব্যঃ
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="other_info" name="other_info" placeholder="অন্য কোন বিশেষ তথ্য থাকলে" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">জমা দিন</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

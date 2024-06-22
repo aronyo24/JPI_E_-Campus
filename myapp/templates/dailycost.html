@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="mt-5 pt-3">
+    <div class="container-fluid">
+    </div>
+    
+    <div class="row justify-content-center mt-5">
+        {% if messages %}
+                <div class="row">
+                    {% for message in messages %}
+                                <h4 style="text-align: center; color: #0cf50c;">{{ message }}</h4>
+                    {% endfor %}
+                </div>
+            {% endif %}
+    
+   
+        <h2 class="text-center">নৈমিত্তিক ব্যয়</h2>
+        <div class="col-md-8 mb-3 align-content-center">
+            <div class="card h-100">
+                <div class="wrapper1 justify-content-center" style="height: auto;">
+                    <div class="container">
+                        <form id="formAwesome" method="post" action="{% url 'dailycost' %}">
+                            {% csrf_token %}
+                            <div class="modal-body">
+                                <hr class="new1">
+                                <div class="form-group row">
+                                    <label for="date" class="col-sm-6 col-form-label">তারিখঃ</label>
+                                    <div class="col-sm-6">
+                                        <input type="date" id="date" name="date" class="form-control" required>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="expenditure_sector" class="col-sm-6 col-form-label">ব্যায়ের খাতঃ</label>
+                                    <div class="col-sm-6">
+                                        <select id="expenditure_sector" name="expenditure_sector" class="form-control">
+                                            <option value="সম্পদ">সম্পদ</option>
+                                            <option value="মাছের খাবার">মাছের খাবার</option>
+                                            <option value="খরচ যোগ্য">খরচ যোগ্য</option>
+                                            <option value="মজুর">মজুর</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="item_name" class="col-sm-6 col-form-label">দ্রব্যের নামঃ</label>
+                                    <div class="col-sm-6">
+                                        <select id="item_name" name="item_name" class="form-control">
+                                            <option value="সার">সার</option>
+                                            <option value="তেল (পেট্রল)">তেল (পেট্রল)</option>
+                                            <option value="তেল (ডিজেল)">তেল (ডিজেল)</option>
+                                            <option value="খৈল">খৈল</option>
+                                            <option value="যাতায়াত">যাতায়াত</option>
+                                            <option value="তালা">তালা</option>
+                                            <option value="টেস্টার">টেস্টার</option>
+                                            <option value="ফিলান্স">ফিলান্স</option>
+                                            <option value="বিবিধ">বিবিধ</option>
+                                            <option value="মজুরি/বেতন">মজুরি/বেতন</option>
+                                            <option value="ঘের কাটা">ঘের কাটা</option>
+                                            <option value="মেশিন/যন্ত্রপাতি">মেশিন/যন্ত্রপাতি</option>
+                                            <option value="কার">কার</option>
+                                            <option value="কালভার্ট">কালভার্ট</option>
+                                            <option value="পেঁপে">পেঁপে</option>
+                                            <option value="মোবিল">মোবিল</option>
+                                            <option value="বাঁশ ক্রয়">বাঁশ ক্রয়</option>
+                                            <option value="পিলার">পিলার</option>
+                                            <option value="চুন">চুন</option>
+                                            <option value="সবজির বীজ">সবজির বীজ</option>
+                                            <option value="হাড়ি">হাড়ি</option>
+                                            <option value="বিদ্যুৎ বিল">বিদ্যুৎ বিল</option>
+                                            <option value="পলিথিন">পলিথিন</option>
+                                            <option value="বালি">বালি</option>
+                                            <option value="উকুন নাশক">উকুন নাশক</option>
+                                            <option value="মোবিল বিল">মোবিল বিল</option>
+                                            <option value="ইলেকট্রনিক্স">ইলেকট্রনিক্স</option>
+                                            <option value="সেচ পাইপ">সেচ পাইপ</option>
+                                            <option value="হাসুয়া">হাসুয়া</option>
+                                            <option value="টিন">টিন</option>
+                                            <option value="বোরিং">বোরিং</option>
+                                            <option value="লিটার">লিটার</option>
+                                            <option value="নেট, সুতা, জাল">নেট, সুতা, জাল</option>
+                                            <option value="ছিয়ে">ছিয়ে</option>
+                                            <option value="ফিটকিরি">ফিটকিরি</option>
+                                            <option value="ইট">ইট</option>
+                                            <option value="অক্সিজেন ট্যাবলেট">অক্সিজেন ট্যাবলেট</option>
+                                            <option value="রড">রড</option>
+                                            <option value="ডুবন্ত খাবার">ডুবন্ত খাবার</option>
+                                            <option value="নৌকা">নৌকা</option>
+                                            <option value="DAP">DAP</option>
+
+                                            <!-- Add other options here -->
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="quantity" class="col-sm-6 col-form-label">পরিমাণঃ</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="পরিমাণ" required>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select  id="unit" name="unit" required class="form-control" >
+                                            <option value="---">---</option>
+                                            <option value="kg">কেজি</option>
+                                            <option value="kg">লিটার</option>
+                                            <option value="mon">মণ</option>
+                                            <option value="bosta">বস্তা</option>
+                                            <option value="packet">প্যাকেট</option>
+                                            <option value="ones"> টি </option>
+                                            <option value="man"> জন </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="cost_amount" class="col-sm-6 col-form-label">খরচের পরিমাণঃ</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="cost_amount" name='cost_amount' placeholder="মোট মুল্য" required>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="spender" class="col-sm-6 col-form-label"> খরচকারীঃ</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="spender" name="spender" placeholder="কে খরচ করেছে ?" required>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                  <label for="voucher" class="col-sm-6 col-form-label">
+                                    ভাউচারঃ
+                                  </label>
+                                  <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="voucher" name='voucher' placeholder="রশিদ নম্বর" required>
+                                  </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                 <button type="submit" class="btn  text-center" style="width: 100%; text-align: center">জমা দিন</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

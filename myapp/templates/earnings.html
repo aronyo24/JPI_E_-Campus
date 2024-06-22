@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<main class="mt-5 pt-3">
+    <div class="container-fluid"></div>
+    <div class="row justify-content-center mt-5">
+        
+        <div class="row justify-content-center mt-5">
+        {% if messages %}
+                <div class="row">
+                    {% for message in messages %}
+                                <h4 style="text-align: center; color: #0cf50c;">{{ message }}</h4>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>>
+        <h2 class="text-center">Earnings</h2>
+        <div class="col-md-8 mb-3  align-content-center">
+            <div class="card h-100">
+                <div class="wrapper1  justify-content-center" style="height: auto;">
+                    <div class="container ">
+                        <form id="formAwesome" method="post" action="{% url 'earnings' %}">
+                            {% csrf_token %}
+                            <div class="modal-body">
+                                <hr class="new1">
+                                <div class="form-group row">
+                                    <label for="date" class="col-sm-6 col-form-label">Date:</label>
+                                    <div class="col-sm-6">
+                                        <input type="date" id="date" name="date" class="form-control" required>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="sector" class="col-sm-6 col-form-label">Sector:</label>
+                                    <div class="col-sm-6">
+                                        <select name="sector" id="sector" class="form-control col-md-2" required="">
+                                             <option value="">--Select--</option>
+                                             <option value="মাছ">মাছ </option>
+                                             <option value="তরকারী">তরকারী</option>
+                                             <option value="অন্যান্য">অন্যান্য </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="item" class="col-sm-6 col-form-label">Item:</label>
+                                    <div class="col-sm-6">
+                                        <select name="item" id="item" class="form-control col-md-2" required="">
+                                            <option value="">--Select--</option>
+                                            <option value="রুই">রুই </option>
+                                            <option value="কাতলা">কাতলা</option>
+                                            <option value="মৃগেল">মৃগেল</option>
+                                            <option value="্রাস কার্প ">গ্রাস কার্প </option>
+                                            <option value="পুটি">পুটি </option>
+                                            <option value="তেলাপিয়া">তেলাপিয়া</option>
+                                            <option value="8">চিংড়ি </option>
+                                            <option value="9">সিল্ভার</option>
+                                            <option value="10">ধানী </option>
+                                            <option value="11">জাপানী </option>
+                                            <option value="12">মাছের ডিম</option>
+                                            <option value="13">ব্লাড কার্প</option>
+                                            <option value="14">লাউ</option>
+                                            <option value="15">মিষ্টি কুমড়া</option>
+                                            <option value="16">পুই শাক</option>
+                                            <option value="17">পালন শাক</option>
+                                            <option value="18">ঢেড়স</option>
+                                            <option value="19">ধুন্দল </option>
+                                            <option value="22">পেপে</option>
+                                            <option value="23">বেগুন</option>
+                                            <option value="24">মরিচ </option>
+                                            <option value="25">টমেটো</option>
+                                            <option value="26">শোল</option>
+                                            <option value="27">বৃগেড</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="source" class="col-sm-6 col-form-label">Source:</label>
+                                    <div class="col-sm-6">
+                                        <select name="source" id="source" class="form-control col-md-2" required="">
+                                            <option value="">--Select--</option>
+                                            <option value="1">উত্তর</option>
+                                            <option value="2">দক্ষিণ</option>
+                                            <option value="3">পূর্ব</option>
+                                            <option value="4">পশ্চিম </option>
+                                            <option value="5">উজ্জ্বল</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="quantity_per_unit" class="col-sm-6 col-form-label">Quantity Per Unit:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="quantity_per_unit" name="quantity_per_unit" placeholder="Quantity of Fish" required>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="quantity" class="col-sm-6 col-form-label">Quantity:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="price" name="quantitye" placeholder="quantity" required>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="unit" class="col-sm-6 col-form-label">Unit:</label>
+                                    <div class="col-sm-6">
+                                        <select name="unit" id="unit"  class="form-control col-md-2" required="">
+                                             <option value="">--Select--</option>
+                                             <option value="কেজি">কেজি</option>
+                                             <option value="মণ">মণ</option>
+                                             <option value="প্যাকেট">প্যাকেট</option>
+                                             <option value="বস্ত">বস্তা</option>
+                                             <option value="লিটার">লিটার</option>
+                                             <option value="টি">টি</option>
+                                             <option value="জন">জন</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="price" class="col-sm-6 col-form-label">Price:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="price" name="price" placeholder="Price" required>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="memo" class="col-sm-6 col-form-label">Memo:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="memo" name="memo" placeholder="Memo:" required>
+                                    </div>
+                                </div>
+                                <hr style="height: 2px;">
+                                <div class="form-group row">
+                                    <label for="comment" class="col-sm-6 col-form-label">Comment:</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="comment" name="comment" placeholder="Any other special information" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn text-center" style="width: 100%; text-align: center;">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

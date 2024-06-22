@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="mt-5 pt-3" style="height: auto;">
+    <div class="container-fluid" style="height: auto;">
+        <div class="row justify-content-center mt-5" style="height: auto;">
+            <h2 class="text-center">মাসিক রিপোর্ট</h2>
+            <div class="col-md-8 mb-3 align-content-center">
+                <div class="card">
+                    <div class="wrapper1 justify-content-center" style="height: auto;">
+                        <div class="container">
+                            <form action="" method="get" class="mb-3">
+                                <div class="row pt-4"> 
+                                    <div class="col-sm-4">
+                                        <label for="month" class="mr-2">Select Month:</label>
+                                        <select name="month" id="month" class="mr-2">
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                            <option value="3">March</option>
+                                            <option value="4">April</option>
+                                            <option value="5">May</option>
+                                            <option value="6">June</option>
+                                            <option value="7">July</option>
+                                            <option value="8">August</option>
+                                            <option value="9">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
+                                        </select> 
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="year" class="mr-2">Select Year:</label>
+                                        <select name="year" id="year" class="mr-2">
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                        </select> 
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button type="submit" class="btn btn-primary col-sm-12">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                <div style="color: #100c44;text-align: center;font-weight: bolder">
+                    {% if request.GET.month and request.GET.year %}
+                        {% if request.GET.month == "1" %}
+                            {% with "January" as month_name %}
+                                <p class="font-weight-bold">{{ month_name }} {{ request.GET.year }}</p>
+                            {% endwith %}
+                        {% elif request.GET.month == "2" %}
+                            {% with "February" as month_name %}
+                                <p class="font-weight-bold"> {{ month_name }} {{ request.GET.year }}</p>
+                            {% endwith %}
+                        {% elif request.GET.month == "3" %}
+                            {% with "March" as month_name %}
+                                <p class="font-weight-bold"> {{ month_name }} {{ request.GET.year }}</p>
+                            {% endwith %}
+                        {% elif request.GET.month == "4" %}
+                            {% with "April" as month_name %}
+                                <p class="font-weight-bold">{{ month_name }} {{ request.GET.year }}</p>
+                            {% endwith %}
+                        {% elif request.GET.month == "5" %}
+                            {% with "May" as month_name %}
+                                <p class="font-weight-bold">{{ month_name }} {{ request.GET.year }}</p>
+                            {% endwith %}
+                        {% elif request.GET.month == "6" %}
+                            {% with "June" as month_name %}
+                                <p class="font-weight-bold">{{ month_name }} {{ request.GET.year }}</p>
+                            {% endwith %}
+                        {% elif request.GET.month == "7" %}
+                            {% with "July" as month_name %}
+                                <p class="font-weight-bold"> {{ month_name }} {{ request.GET.year }}</p>
+                            {% endwith %}
+                        {% elif request.GET.month == "8" %}
+                            {% with "August" as month_name %}
+                                <p class="font-weight-bold">{{ month_name }} {{ request.GET.year }}</p>
+                            {% endwith %}
+                        {% elif request.GET.month == "9" %}
+                            {% with "September" as month_name %}
+                                <p class="font-weight-bold">{{ month_name }} {{ request.GET.year }}</p>
+                            {% endwith %}
+                        {% elif request.GET.month == "10" %}
+                            {% with "October" as month_name %}
+                                <p class="font-weight-bold">{{ month_name }} {{ request.GET.year }}</p>
+                            {% endwith %}
+                        {% elif request.GET.month == "11" %}
+                            {% with "November" as month_name %}
+                                <p class="font-weight-bold"> {{ month_name }} {{ request.GET.year }}</p>
+                            {% endwith %}
+                        {% elif request.GET.month == "12" %}
+                            {% with "December" as month_name %}
+                                <p class="font-weight-bold"> {{ month_name }} {{ request.GET.year }}</p>
+                            {% endwith %}
+                        {% endif %}
+                    {% endif %} 
+                </div>
+                   
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="3" class="text-center">মাছ ক্রয়</th>
+                        </tr>
+                        <tr>
+                            <th>Fish Name</th>
+                            <th>Total Quantity</th>
+                            <th>Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for fish in fish_data %}
+                        <tr>
+                            <td>{{ fish.fish_name }}</td>
+                            <td>{{ fish.total_quantity }}</td>
+                            <td>{{ fish.total_price }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Total</td>
+                            <td>{{ total_quantity_all.quantity__sum }}</td>
+                            <td>{{ total_price_all.price__sum }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="text-center">নৈমিত্তিক ব্যয়</th>
+                        </tr>
+                        <tr>
+                            <th>ব্যায়ের খাতঃ</th>
+                            <th>Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for d_cost in cost_data %}
+                        <tr>
+                            <td>{{ d_cost.expenditure_sector }}</td>
+                            <td>{{ d_cost.total_cost_amount }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Total</td>
+                            <td>{{ total_cost_amount_all.cost_amount__sum }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S_research</title>
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/line-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer text-center text-lg-start">
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <img src="{% static 'images/biswas_logo.png' %}" class="d-block w-60 h-100" alt="...">
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Other columns and content -->
+                </div>
+            </div>
+        </section>
+    </footer>
+
+    <!-- Second footer -->
+    <footer class="text-center py-4" style="background: #172a14; color: #ffffff;">
+        <p class="mb-0">&copy; 2024 Biswas Agro. All Rights Reserved.</p>
+        <p class="mb-0">Designed and Developed by <span style="font-weight: bold;">Aonyo Mojumder</span></p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{% static 'js/aos.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.5.1.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="mt-5 pt-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center mt-5">
+                    <div class="row justify-content-center mt-5">
+                        {% if messages %}
+                                <div class="row">
+                                    {% for message in messages %}
+                                                <h4 style="text-align: center; color: #0cf50c;">{{ message }}</h4>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                    </div>
+            <h2 class="text-center">Salary Form</h2>
+            <div class="col-md-8 mb-3 align-content-center">
+                <div class="card h-100">
+                    <div class="wrapper1 justify-content-center" style="height: auto;">
+                        <div class="container">
+                            <form id="formAwesome" method="post" action="{% url 'salary' %}">
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    <hr class="new1">
+                                    <div class="form-group row">
+                                        <label for="date" class="col-sm-6 col-form-label">তারিখঃ</label>
+                                        <div class="col-sm-6">
+                                            <input type="date" id="date" name="date" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="purpose" class="col-sm-6 col-form-label">ক্ষেত্র:</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control" id="purpose" name="purpose" onchange="showFields()" required>
+                                                <option value="">--Please Select---</option>
+                                                <option value="Salary">Salary</option>
+                                                <option value="Labour">Labour</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div id="labourFields" style="display: none;">
+                                        <hr style="height: 2px;">
+                                        <div class="form-group row" id="reasonContainer">
+                                            <label for="reason" class="col-sm-6 col-form-label">Reason:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control col-md-4" id="reason" name="reason" maxlength="20" placeholder="Reason">
+                                            </div>
+                                        </div>
+                                        <hr style="height: 2px;">
+                                        <div class="form-group row " id="quantityContainer">
+                                            <label class="col-sm-6 col-form-label" for="quantity">Quantity:</label>
+                                            <div class="col-sm-6">
+                                                <input type="number" class="form-control col-md-4" id="quantity" name="quantity" placeholder="Quantity">
+                                            </div>
+                                        </div>
+                                        <hr style="height: 2px;">
+                                        <div class="form-group row" id="rateContainer">
+                                            <label class="col-sm-6 col-form-label" for="rate">Rate:</label>
+                                            <div class="col-sm-6">
+                                                  <input type="number" class="form-control col-md-4" id="rate" name="rate" placeholder="Rate">
+                                            </div>
+                                            
+
+                                        </div>
+                                    </div>
+
+
+                                    <div id="salaryFields" style="display: none;">
+                                         <hr style="height: 2px;">
+                                        <div class="form-group row " id="reasonContainer">
+                                            <label for="reason" class="col-sm-6 col-form-label">Reason:</label>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control col-md-4 add-date-month-picker" id="reason" name="reason" placeholder="Reason" value="March 2024">
+                                            </div>
+
+                                        </div>
+                                         <hr style="height: 2px;">
+                                        <div class="form-group row" id="personelContainer">
+                                            <label for="personel" class="col-sm-6 col-form-label">Personel:</label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control col-md-4" id="personel" name="personel">
+                                                    <option value="প্রভাস বকসি">প্রভাস বকসি</option>
+                                                    <option value="সঞ্জিত রায়">সঞ্জিত রায়</option>
+                                                    <option value="অপূর্ব বকসি">অপূর্ব বকসি</option>
+                                                    <option value="তুষার">তুষার</option>
+                                                    <option value="Ponkoj Kumar Dh">Ponkoj Kumar Dh</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label for="Total:" class="col-sm-6 col-form-label">Total:</label>
+                                        <div class="col-sm-6">
+                                            <input type="number" class="form-control col-md-4" id="total" name="total" placeholder="Total">
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label class="col-sm-6 col-form-label" for="voucher">Voucher:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control col-md-4" id="voucher" name="voucher" placeholder="Voucher">
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+                                    <div class="form-group row">
+                                        <label class="col-sm-6 col-form-label" for="comment">Comment:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control col-md-4" id="comment" name="comment" placeholder="Comment">
+                                        </div>
+                                    </div>
+                                    <hr style="height: 2px;">
+
+
+                                   
+                                    <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">জমা দিন</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    function showFields() {
+        var purpose = document.getElementById("purpose").value;
+        if (purpose === "Labour") {
+            document.getElementById("labourFields").style.display = "block";
+            document.getElementById("salaryFields").style.display = "none";
+        } else if (purpose === "Salary") {
+            document.getElementById("labourFields").style.display = "none";
+            document.getElementById("salaryFields").style.display = "block";
+        } else {
+            document.getElementById("labourFields").style.display = "none";
+            document.getElementById("salaryFields").style.display = "none";
+        }
+    }
+</script>
+
+{% endblock %}

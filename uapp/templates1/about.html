@@ -1,0 +1,71 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+    
+
+    
+
+<div style="height: 60px">
+</div>
+ <section id="Home" style="height: 40vh; background-image: url('{% static "images/about_1.png" %}'); background-repeat: no-repeat; background-position: center; background-size: cover;">
+     <div class="container text-center pt-5" style="margin: 0 auto;"><h1 class="pt-4" style="color: #08ee0c;-webkit-text-stroke: 1.5px #150aaf;">About Us</h1></div>
+ </section>
+
+    <div class="container">
+        <div class="row gy-5 align-items-center">
+
+            <div class="col-12 col-lg-6">
+                <div class="text-center text-lg-start">
+                   <h2 class="display-4 mb-4 text-primary" style="color: #11ef08 !important;">ইউনিটি এগ্রোতে স্বাগতম</h2>
+
+                    <p class="lead fs-5 text-secondary mb-4" style="color: #ffffff !important;">
+                       ইউনিটি এগ্রো একটি কৃষি প্রতিষ্ঠান । এটি একটি উন্নত ফার্ম যেখানে মাছ চাষ এবং বিভিন্ন প্রকারের সবজি উৎপাদনের উদ্যোগের উপর ভিত্তি করে। ইউনিটি এগ্রো প্রতিষ্ঠানটির লক্ষ্য হলো প্রাকৃতিক উৎপাদনের সৃষ্টি করা এবং মানব সম্প্রদায়ের প্রধান খাবার সরবরাহ নিশ্চিত করা।
+
+                        ইউনিটি এগ্রো ফার্মটি অনেক প্রযুক্তি এবং সৃজনশীলতার সাথে পরিপূর্ণ। মাছ চাষের জন্য আমরা সম্পূর্ণাঙ্গ প্রযুক্তিতে ব্যবস্থাপনা করি, যেখানে আমরা মডার্ন মেশিনারি এবং উন্নত প্রযুক্তি ব্যবহার করি। এছাড়া, আমরা পরিবেশের সম্মত পদ্ধতিতে মাছ চাষ করার জন্য নির্দিষ্ট পরিবেশনা অনুসরণ করি।
+
+                        সবজি চাষের জন্য, আমরা উন্নত কৃষি পদ্ধতিতে প্রতিষ্ঠান করেছি। আমাদের কৃষকদের প্রশিক্ষণ এবং সঠিক পরিচিতি উন্নত করা হয়েছে যাতে সঠিক উৎপাদনের জন্য প্রযুক্তি ও প্রশিক্ষণ উপলব্ধ থাকে।
+
+                        ইউনিটি এগ্রোর প্রতিষ্ঠানের উদ্দেশ্য হলো একটি সুস্থ ও সাশ্রয়ী কৃষি প্রক্রিয়ার মাধ্যমে মানুষের প্রাথমিক প্রয়োজনীয় খাবার সরবরাহ করা।
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <img class="img-fluid rounded shadow-lg" loading="lazy" src="{% static 'images/About_2 (1).png' %}" alt="About Us Image">
+            </div>
+        </div>
+    </div>
+</section>
+    
+     <div class="container pt-4">
+       <div class="row gy-4">
+             <div class="col-md-4">
+                <div class="d-flex justify-content-center align-items-center rounded shadow-lg" >
+                    <div style="text-align: center; color: white;">
+                        <a href="tel:01912497506" style="font-size: 30px; color: #11ef08;"><i class="las la-phone-volume"></i></a>
+                        <h4 >CALL</h4>
+                        <h6 class="mb-3" style="margin-bottom: 0;">01234567899</h6>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-4">
+                <div class="d-flex justify-content-center align-items-center rounded shadow-lg">
+                    <div style="text-align: center; color: white;">
+                        <a href="tel:01912497506" style="font-size: 30px; color: #11ef08;"><i class="las la-envelope-open"></i></a>
+                        <h5 >EMAIL</h5>
+                        <h6 class="mb-3" style="margin-bottom: 0;">unityagro@gmail.com</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex justify-content-center align-items-center rounded shadow-lg">
+                    <div style="text-align: center; color: white;">
+                        <a href="tel:01912497506" style="font-size: 30px; color: #11ef08;"><i class="las la-map-marker"></i></a>
+                        <h5 >ADDRESS</h5>
+                        <h6 class="mb-3" style="margin-bottom: 0;">nome/none/none/000</h6>
+                    </div>
+                </div>
+            </div>
+
+       </div>
+  </div>
+{% endblock %}
